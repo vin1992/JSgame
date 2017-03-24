@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>接炸弹</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+	<div class="wrap">
+		<!-- 游戏主视图 -->
+		<div  class="view" >
+			<div id="master" class="box"></div>
+		</div>
+		<!-- 面板 -->
+		<div class="panel">
+			得分：<span class="score"></span>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/EventHander.js"></script>
+	<script type="text/javascript">
+	var view = document.querySelector(".view");
+	var master = EventUtil.getEle("master");
+	var minLeft = master.parentNode.offsetLeft;
+	var maxRight = master.parentNode.offsetWidth-master.offsetWidth;
+	var redrop = false;
+	var timer = null;
+	var score = 0;
+	var count = document.querySelector(".score");
+	count.innerText = score;
+	var speed = 1000;//初始化为1s
+	const CHANCE = 3;  //共三次机会
+	var ch_num = 1;  // 机会次数初始化
+	// console.log(maxRight);
+	// master  添加动作（左右）
+	var m_move = function (ev) {
+		var btn_code = ev.keyCode;
+		var pos = master.offsetLeft;  //底部box 的offsetleft
+		// if (pos > maxRight || pos < minLeft) return;
+		if(btn_code == 39) {
+			var l_pos = pos;
+			if(l_pos<maxRight) {
+				l_pos+=10;
+				master.style.left = l_pos+'px';
+			}
+			
+		}else if(btn_code == 37) {
+			var r_pos = pos;
+			if(minLeft<r_pos) {
+				r_pos-=10;
+				master.style.left = r_pos+'px';
+			}
+		}
+		// console.log(l_pos);
+		// console.log(r_pos);
+	}
+	// 为master 绑定动作
+	EventUtil.addHandler(document,"keydown",m_move);
+
+	// 顶部随机位置掉方块 
+    function createEnm() {
+    	var enermy = document.createElement('div');
+    	var view = document.querySelector(".view");
+		enermy.className = "enm";
+		view.appendChild(enermy);
+		enermy.style.left = Math.abs(Math.random() * view.offsetWidth - enermy.offsetWidth) + 'px';  //黄色方块随机位置
+		var e_num = document.querySelectorAll('.enm').length;
+		if(e_num < 2)  return enermy;
+    }
+
+    var enm = createEnm();
+
+	// 掉块 并检查下边界
+	function drop() {
+		if(enm.offsetTop > view.offsetHeight - enm.offsetHeight) { //如果触碰底部，
+			clearInterval(timer);
+			view.removeChild(enm);
+			// 重新生成黄块
+			enm = createEnm();  
+			// 机会次数统计
+			ch_num++;
+			if(ch_num > CHANCE) {
+				alert("Game Over");
+				count.innerText = 0;
+				ch_num = 1;
+				speed = 1000;
+			}
+			timer = setInterval(drop,speed);
+		}else if(impact(enm,master)) {  //如果与红块相撞  则加分
+			// alert("相撞成功");
+			clearInterval(timer);
+			view.removeChild(enm);
+			enm = createEnm();
+			// 加分
+			score++;
+			speed *= 1/score;
+			count.innerText = score;
+			// 如果大于1分 速度加快
+			timer = setInterval(drop,speed);
+
+		}else {//如果没有触碰底部
+			var e_top = enm.offsetTop;
+			e_top+=50; 
+			enm.style.top = e_top + 'px';
+		}
+	}
+	// 判断元素相撞
+	function impact(obj,dobj) {
+		var obj = {
+			x:obj.offsetLeft,
+			y:obj.offsetTop,
+			w:obj.offsetWidth,
+			h:obj.offsetHeight
+		};
+		var dobj = {
+			x:dobj.offsetLeft,
+			y:dobj.offsetTop,
+			w:dobj.offsetWidth,
+			h:dobj.offsetHeight
+		}
+
+		if(obj.x+obj.w >= dobj.x && obj.x <= dobj.x + dobj.w && obj.y + obj.h >= dobj.y && obj.y <= dobj.y + dobj.h) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	var timer = setInterval(drop,speed);
+	// clearInterval(timer)// console.log(timer);
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+@color:red;
+@bgColor:black;
+@width:800px;
+@height:600px;
+.border(@w:1px,@stl:solid,@c:#aaa){
+	border:@arguments
+}
+.box-size(@op:border-box) {
+	-webkit-box-sizing:@op;
+	-moz-box-sizing:@op;
+	-o-box-sizing:@op;
+	box-sizing:@op;
+}
+.radius(@c:5px) {
+	-webkit-border-radius:@c;
+	-moz-border-radius:@c;
+	-o-border-radius:@c;
+	border-radius:@c;
+}
+.bgColor(@c:red) {
+	background-color:@c;
+}
+.dis-lb {
+	display:inline-block;
+}
+.dis-l {
+	display:inline;
+}
+.dis-b {
+	display:block;
+}
+.pos-r(@t:0,@r:0,@b:0,@l:0) {
+	position:relative;
+	top:@t;
+	left:@l;
+	right:@r;
+	bottom:@b;
+}
+.pos-a(@t:0,@r:0,@b:0,@l:0) {
+	position:absolute;
+	top:@t;
+	left:@l;
+	right:@r;
+	bottom:@b;
+}
+.pos-m(@b:0,@l:0) {
+	position:absolute;
+	bottom:@b;
+	left:@l;
+}
+.wrap {
+	.pos-r();
+	width:@width;
+	height:@height;
+	.border();
+	.view {
+		.pos-r();
+		width:@width *2/3;
+		height:@height;
+		background-color:@bgColor;
+		.dis-lb;
+		overflow:hidden;
+		.enm {
+			.box;
+			.bgColor(yellow);
+			top:0;
+		}
+	}
+	.panel {
+		 position:absolute;
+		 top:0;
+		 right:0;
+		.dis-lb;
+		 width:@width/4;
+		 height:@height;
+		 .score {
+		 	.dis-lb;
+		 	width:50px;
+		 	height:30px;
+		 	.bgColor(#aaa);
+		 	margin-top:20px;
+		 	
+		 }
+	}
+	.box {
+		.pos-m();
+		width:@width/10;
+		height:@width/10;
+		.bgColor();
+		.radius();
+	}
+	
+}

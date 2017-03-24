@@ -1,0 +1,82 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000323}}
+.dis-lb {
+  display: inline-block;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000326}}
+.dis-l {
+  display: inline;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000329}}
+.dis-b {
+  display: block;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000351}}
+.wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 800px;
+  height: 600px;
+  border: 1px solid #aaaaaa;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000356}}
+.wrap .view {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 533.33333333px;
+  height: 600px;
+  background-color: #000000;
+  display: inline-block;
+  overflow: hidden;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000363}}
+.wrap .view .enm {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  background-color: #ff0000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #ffff00;
+  top: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000369}}
+.wrap .panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 200px;
+  height: 600px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000376}}
+.wrap .panel .score {
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  background-color: #aaaaaa;
+  margin-top: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/Vin_coder\/Desktop\/web学习\/JSgame\/css\/style\.less}line{font-family:\0000385}}
+.wrap .box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  background-color: #ff0000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=style.css.map */
